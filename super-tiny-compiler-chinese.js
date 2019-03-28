@@ -518,6 +518,8 @@ function parser(tokens) {
       // 增加 `current` 变量
       // 
       // 所以我们创建一个 `while` 循环，直到遇到类型为 `'paren'`，值为右圆括号的 token。 
+      // 不是一个括号，或者不是一个右括号，递归生成node，作为当前node的params子节点
+      // 如果是右括号，表示该表达式结束了，params没有其他节点了
       while (
         (token.type !== 'paren') ||
         (token.type === 'paren' && token.value !== ')')
